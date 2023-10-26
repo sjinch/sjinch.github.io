@@ -19,7 +19,7 @@ locale                   : "en-US"
 title                    : "Site Title"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Your Name"
+name                     : "Tech Blog"
 description              : "An amazing website."
 url                      : "https://sjinch.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
