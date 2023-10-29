@@ -1,84 +1,77 @@
-<!-- {% assign navigation = site.data.navigation[include.nav] %}
-
-<nav class="nav__list">
-  {% if page.sidebar.title %}<h3 class="nav__title" style="padding-left: 0;">{{ page.sidebar.title }}</h3>{% endif %}
-  <input id="ac-toc" name="accordion-toc" type="checkbox" />
-  <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label | default: "Toggle Menu" }}</label>
-  <ul class="nav__items">
-    {% for nav in navigation %}
-      <li>
-        {% if nav.url %}
-          <a href="{{ nav.url | relative_url }}"><span class="nav__sub-title">{{ nav.title }}</span></a>
-        {% else %}
-          <span class="nav__sub-title">{{ nav.title }}</span>
-        {% endif %}
-
-        {% if nav.children != null %}
-        <ul>
-          {% for child in nav.children %}
-            <li><a href="{{ child.url | relative_url }}"{% if child.url == page.url %} class="active"{% endif %}>{{ child.title }}</a></li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-      </li>
-    {% endfor %}
-  </ul>
-</nav> -->
+{% assign sum = site.posts | size %}
 
 <nav class="nav__list">
   <input id="ac-toc" name="accordion-toc" type="checkbox" />
-  <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label | default: "Toggle Menu" }}</label>
+  <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label }}</label>
   <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
       <li>
-        {% assign sum = site.posts | size %}
-        <span class="nav__sub-title" v-on:click='togglec()'>📂 전체 글 수 {{sum}} 개</span>
+            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">{{sum}}</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
       </li>
       <li>
-        {% assign sum = site.categories['논문리뷰'] | size %}
-        <span class="nav__sub-title" v-on:click='togglec()'><a href="/categories/Paper review">📝 Paper review ({{sum}})</a></span>
-        {% assign fav_tags = "Computer Vision/CV, Domain Adaptation/DA, Generative Model/GM, 3D Vision/3DV" | split: ", " %}
-        {% for fav_tag in fav_tags %}
-          {% assign sep = fav_tag | split: "/" %}
-          <ul v-show="flag_c">
-            {% for tag in site.tags %}
-              {% if tag[0] == sep[0] %}
-                {% assign cnt = 0 %}
-                {% for page in tag[1] %}
-                  {% if page.url contains "%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0" %}
-                    {% assign cnt = cnt | plus: 1 %}
-                  {% endif %}
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">Paper review</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                {% for category in site.categories %}
+                    {% if category[0] == "3D Vision" %}
+                        <li><a href="/categories/cpp" class="">3D Vision ({{category[1].size}})</a></li>
+                    {% endif %}
                 {% endfor %}
-                <li><a href="/categories/Paper review/{{sep[1]}}" class="">{{sep[0]}} ({{cnt}})</a></li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        {% endfor %}
-
-        {% assign sum = site.categories['Programming test'] | size %}
-        <span class="nav__sub-title" v-on:click='togglec()'><a href="/categories/Programming test">💻 Programming test ({{sum}})</a></span>
-
-        {% assign sum = site.categories['AI studying'] | size %}
-        <span class="nav__sub-title" v-on:click='togglec()'><a href="/categories/AI studying">📒 AI studying ({{sum}})</a></span>
-
-        <!-- <span class="nav__sub-title" v-on:click='togglet()'>tags</span>
-        <ul v-show="flag_t">
-        
-          {% assign tags_max = 0 %}
-          {% for tag in site.tags %}
-            {% if tag[1].size > tags_max %}
-              {% assign tags_max = tag[1].size %}
-            {% endif %}
-          {% endfor %}
-
-            {% for i in (1..tags_max) reversed %}
-              {% for tag in site.tags %}
-                {% if tag[1].size == i %}
-                  <li><a href="/tags/#{{tag[0] | slugify}}" class="">{{tag[0] | none }} ({{tag[1].size}})</a></li>
-                {% endif %}
-              {% endfor %}
-            {% endfor %}
-            
-        </ul> -->
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "2D Vision" %}
+                        <li><a href="/categories/stl" class="">2D Vision ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Domain Adaptation" %}
+                        <li><a href="/categories/stl" class="">Domain Adaptation ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">AI studying</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Machine Learning" %}
+                        <li><a href="/categories/algorithm" class="">Machine Learning ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Deep learning" %}
+                        <li><a href="/categories/programmers" class="">Deep learning ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Probability" %}
+                        <li><a href="/categories/programmers" class="">확률이론 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+      <span class="nav__sub-title">Programming Test</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Programmers" %}
+                        <li><a href="/categories/algorithm" class="">프로그래머스 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Baekjoon" %}
+                        <li><a href="/categories/algorithm" class="">백준 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
       </li>
   </ul>
 </nav>
