@@ -1,6 +1,6 @@
 ---
 title: "논문리뷰 / LiDAR Domain Adaptation"
-permalink: /categories/Paper review/LiDAR_DA/
+permalink: /categories/Paper review/
 layout: archive
 author_profile: true
 ---
