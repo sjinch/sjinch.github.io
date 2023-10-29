@@ -1,6 +1,6 @@
 ---
 title: "AI 공부 / 머신 러닝"
-permalink: /categories/AI studying/Machine Learning/
+permalink: /categories/AI studying/
 layout: archive
 author_profile: true
 ---
