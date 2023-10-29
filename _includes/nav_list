@@ -58,7 +58,7 @@
         <span class="nav__sub-title" v-on:click='togglec()'><a href="/categories/Programming test">💻 Programming test ({{sum}})</a></span>
 
         {% assign sum = site.categories['AI studying'] | size %}
-        <span class="nav__sub-title" v-on:click='togglec()'><a href="/categories/공부">📒 AI studying ({{sum}})</a></span>
+        <span class="nav__sub-title" v-on:click='togglec()'><a href="/categories/AI studying">📒 AI studying ({{sum}})</a></span>
 
         <!-- <span class="nav__sub-title" v-on:click='togglet()'>tags</span>
         <ul v-show="flag_t">
