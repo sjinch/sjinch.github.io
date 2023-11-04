@@ -12,21 +12,21 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Data" %}
-                        <li><a href="/categories/data" class="">C ++ ({{category[1].size}})</a></li>
+                        <li><a href="/categories/data" class=""Data ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "LiDAR" %}
-                        <li><a href="/categories/lidar" class="">C++ STL & 표준 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/lidar" class="">LiDAR ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Computer vision" %}
-                        <li><a href="/categories/computer-vision" class="">C++ 연습 문제 패키지 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/computer-vision" class="">Computer vision ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
